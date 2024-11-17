@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-        backgroundColor: AppColors.blue2,
+        backgroundColor: AppColors.purple,
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
               margin: const EdgeInsets.only(left:20),
               child: const Text(
                 "Please connect a device",
-                style: TextStyle(fontSize: 28,color: AppColors.black),
+                style: TextStyle(fontSize: 28,color: AppColors.cream),
               ),
             ),
             if (bleHandler.connectedDevice == null)
@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: connectDevicePrompt,
                 child: const Text(
                   "Connect",
-                  style: TextStyle(fontSize: 28,color: AppColors.black),
+                  style: TextStyle(fontSize: 28,color: AppColors.cream),
                 ),
               ),
             ),
