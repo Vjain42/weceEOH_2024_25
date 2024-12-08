@@ -15,7 +15,7 @@ class _PowerPageState extends State<PowerInfo> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Power Information"),
-        backgroundColor: AppColors.blue2,
+        backgroundColor: AppColors.indigo,
       ),
       body: Center(
         child: Column(
@@ -67,7 +67,7 @@ class _PowerPageState extends State<PowerInfo> {
                         Navigator.pop(context);
                       },
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: AppColors.white, backgroundColor: AppColors.brown,
+                        foregroundColor: AppColors.white, backgroundColor: AppColors.purple,
                       ),
                     ),
                 ),
