@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-        backgroundColor: AppColors.purple,
+        backgroundColor: AppColors.indigo,
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -214,7 +214,7 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.yellow1,
+                          backgroundColor: AppColors.pink,
                         ),
                       ),
                     ),
@@ -238,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.yellow1,
+                          backgroundColor: AppColors.pink,
                         ),
                       ),
                     ),
@@ -261,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.yellow1,
+                          backgroundColor: AppColors.pink,
                         ),
                       ),
                     ),
