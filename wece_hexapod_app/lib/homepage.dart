@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   //Bluetooth functions start
   void initState() {
     super.initState();
-    bleHandler = BLEHandler(setStateCallback);
+    //bleHandler = BLEHandler(setStateCallback);
     //TODO run at startup
   }
   void loop(){
@@ -39,18 +39,18 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  void connectDevicePrompt() {
-    // Show prompt for connecting a device
-    showModalBottomSheet<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return const BluetoothConnectScreen();
-        });
-  }
+  // void connectDevicePrompt() {
+  //   // Show prompt for connecting a device
+  //   showModalBottomSheet<void>(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return const BluetoothConnectScreen();
+  //       });
+  // }
 
   void disconnectDevice() {
     setState(() {
-      bleHandler.disconnect();
+      //bleHandler.disconnect();
     });
   }
   //Bluetooth functions end
@@ -107,21 +107,21 @@ class _HomePageState extends State<HomePage> {
           //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (bleHandler.connectedDevice != null)
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:[
-                    Container(
-                      margin: const EdgeInsets.all(15),
-                      child: Image.asset(
-                        'images/flower.png',
-                        width: 350,
-                        height: 225,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ]),
-            if (bleHandler.connectedDevice == null)
+            //if (bleHandler.connectedDevice != null)
+              // Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children:[
+              //       Container(
+              //         margin: const EdgeInsets.all(15),
+              //         child: Image.asset(
+              //           'images/flower.png',
+              //           width: 350,
+              //           height: 225,
+              //           fit: BoxFit.cover,
+              //         ),
+              //       ),
+              //     ]),
+            //if (bleHandler.connectedDevice == null)
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:[
@@ -136,29 +136,29 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ]),
             //BLUETOOTH CONNECTION BUTTON
-            if (bleHandler.connectedDevice == null)
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.only(left:20),
-              child: const Text(
-                "Please connect a device",
-                style: TextStyle(fontSize: 28,color: AppColors.cream),
-              ),
-            ),
-            if (bleHandler.connectedDevice == null)
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.only(left:20),
-              // Change button text when clicked.
-              child:ElevatedButton(
-                onPressed: connectDevicePrompt,
-                child: const Text(
-                  "Connect",
-                  style: TextStyle(fontSize: 28,color: AppColors.cream),
-                ),
-              ),
-            ),
-            if (bleHandler.connectedDevice != null)
+            // if (bleHandler.connectedDevice == null)
+            // Container(
+            //   alignment: Alignment.center,
+            //   margin: const EdgeInsets.only(left:20),
+            //   child: const Text(
+            //     "Please connect a device",
+            //     style: TextStyle(fontSize: 28,color: AppColors.cream),
+            //   ),
+            // ),
+            // if (bleHandler.connectedDevice == null)
+            // Container(
+            //   alignment: Alignment.center,
+            //   margin: const EdgeInsets.only(left:20),
+            //   // Change button text when clicked.
+            //   child:ElevatedButton(
+            //     onPressed: connectDevicePrompt,
+            //     child: const Text(
+            //       "Connect",
+            //       style: TextStyle(fontSize: 28,color: AppColors.cream),
+            //     ),
+            //   ),
+            // ),
+            //if (bleHandler.connectedDevice != null)
               Container(
                 alignment: Alignment.topLeft,
                 margin: const EdgeInsets.only(left:20, top:10),
@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                   style: const TextStyle(color: AppColors.black,fontSize:15),
                 ),
               ),//Container
-            if (bleHandler.connectedDevice != null)
+            //if (bleHandler.connectedDevice != null)
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:[
@@ -189,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                     )
                   ]
               ),
-            if (bleHandler.connectedDevice != null)
+            //if (bleHandler.connectedDevice != null)
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:[
@@ -265,7 +265,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ]),
-            if (bleHandler.connectedDevice != null)
+            //if (bleHandler.connectedDevice != null)
               Row( //REMOTE CONTROL BUTTON
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:[
@@ -277,7 +277,7 @@ class _HomePageState extends State<HomePage> {
                         onPressed: () {
                           print('Switching to Remote Control');
                           //bleHandler.bluetoothWrite("0","manual");
-                          bleHandler.bluetoothWrite("manual");
+                          //bleHandler.bluetoothWrite("manual");
                           mode = "manual";
                           Navigator.push(
                             context,
@@ -300,7 +300,7 @@ class _HomePageState extends State<HomePage> {
                           onPressed: (){
                             print('Switching to Auto Control');
                             //bleHandler.bluetoothWrite("0","auto");
-                            bleHandler.bluetoothWrite("auto");
+                            //bleHandler.bluetoothWrite("auto");
                             mode = "auto";
                           },
                           style: ElevatedButton.styleFrom(
@@ -311,7 +311,7 @@ class _HomePageState extends State<HomePage> {
                   ] //children
               ),
             //Click button switch
-            if (bleHandler.connectedDevice != null)
+            //if (bleHandler.connectedDevice != null)
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -356,7 +356,7 @@ class _HomePageState extends State<HomePage> {
 
               ),
             //BLUETOOTH DISCONNECT
-            if (bleHandler.connectedDevice != null)
+            //if (bleHandler.connectedDevice != null)
           Row( //REMOTE CONTROL BUTTON
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
@@ -375,7 +375,7 @@ class _HomePageState extends State<HomePage> {
                   child:ElevatedButton(
                     onPressed: disconnectDevice,
                     child: Text(
-                      "Disconnect: ${bleHandler.connectedDevice!.name}",
+                      "Disconnect: ", //${bleHandler.connectedDevice!.name}",
                       style: const TextStyle(fontSize: 15,color: AppColors.black),
                     ),
                   ),
