@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solar_axis_app/help_remote.dart';
 import 'package:solar_axis_app/theme.dart';
-import 'theme.dart';
+// import 'theme.dart';
 import 'globals.dart';
 
 class Remote extends StatefulWidget {

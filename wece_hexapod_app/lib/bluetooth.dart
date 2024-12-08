@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart'; // commented this out
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter/material.dart';
 import 'package:solar_axis_app/globals.dart';
-import 'package:solar_axis_app/homepage.dart';
+// import 'package:solar_axis_app/homepage.dart'; // commented this out
 
 // Bluetooth connection screen
 class BluetoothConnectScreen extends StatefulWidget {

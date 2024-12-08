@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solar_axis_app/theme.dart';
 import 'dart:async';
-import 'theme.dart';
+// import 'theme.dart';
 import 'power_page.dart';
 import 'weather_page.dart';
 import 'remote.dart';
@@ -19,6 +19,7 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
   double isClicked = 0;
+    // ignore: unused_field   // added this
   Timer? _timer;
   String fact = "Scientists created silcon solar cells in 1954";
   double _setTime= 0;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solar_axis_app/theme.dart';
-import 'theme.dart';
+// import 'theme.dart';
 
 class HelpHome extends StatefulWidget {
   const HelpHome({Key? key}) : super(key: key);

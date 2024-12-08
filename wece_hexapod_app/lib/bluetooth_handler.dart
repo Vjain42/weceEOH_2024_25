@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable   // added this
+
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter_blue/flutter_blue.dart';
@@ -74,6 +76,7 @@ class BLEHandler {
         if (characteristic.uuid.toString() == Constants.uuid) {
           // Format data
           String data = direction + "%";
+          // ignore_for_file: avoid_print   // added this
           print(data); //For debug purposes only
           if (Platform.isAndroid)
           {
@@ -95,6 +98,7 @@ class BLEHandler {
         if(characteristic.properties.notify) {
           await characteristic.setNotifyValue(true);
           notificationSubscription = characteristic.value.listen((value) async {
+            // ignore: unused_field 
             String s = String.fromCharCodes(value);
           });
           await Future.delayed(const Duration(milliseconds: 500));
