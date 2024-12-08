@@ -14,6 +14,10 @@ class AppColors {
   static const yellow1 = Color(0xFFFDE74C);
   static const brown = Color(0xFF6C492B);
   static const yellow2 = Color(0xFFEEBF29);
+  static const purple = Color(0xFF10074C);
+  static const pink = Color(0xFFCD66BB);
+  static const cream = Color(0xFFF7F4DB);
+  static const mauve = Color(0xFF67386C);
 
   //extras
   static const white = Color(0xFFFFFFFF);
@@ -27,7 +31,7 @@ ColorScheme colorScheme = const ColorScheme.dark(
   onPrimary: AppColors.black,
   secondary: AppColors.yellow1,
   onSecondary: AppColors.black,
-  surface: AppColors.blue,
+  surface: AppColors.mauve,
 );
 final appTheme = ThemeData.from(
     colorScheme: colorScheme
