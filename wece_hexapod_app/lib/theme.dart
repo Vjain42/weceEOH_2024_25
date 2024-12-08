@@ -14,10 +14,16 @@ class AppColors {
   static const yellow1 = Color(0xFFFDE74C);
   static const brown = Color(0xFF6C492B);
   static const yellow2 = Color(0xFFEEBF29);
-  static const purple = Color(0xFF10074C);
+  // 2025 new theme color palette 
   static const pink = Color(0xFFCD66BB);
   static const cream = Color(0xFFF7F4DB);
   static const mauve = Color(0xFF67386C);
+  static const darkBlue = Color(0xFF170652);
+  static const purple = Color(0xFF6D3ED2);
+  static const deepPurple = Color(0xFF452589);
+  static const indigo = Color(0xFF3A206D);
+  static const grayishPurple = Color(0xFF4C456D);
+  static const gray = Color(0xFF84848C);
 
   //extras
   static const white = Color(0xFFFFFFFF);

@@ -15,7 +15,7 @@ class _WeatherPageState extends State<WeatherInfo> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Weather Information"),
-        backgroundColor: AppColors.blue2,
+        backgroundColor: AppColors.indigo,
       ),
       body: Center(
         child: Column(
@@ -66,7 +66,7 @@ class _WeatherPageState extends State<WeatherInfo> {
                       Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: AppColors.white, backgroundColor: AppColors.brown,
+                      foregroundColor: AppColors.white, backgroundColor: AppColors.purple,
                     ),
                   ),
                 ),
