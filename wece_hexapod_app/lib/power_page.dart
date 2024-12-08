@@ -15,7 +15,7 @@ class _PowerPageState extends State<PowerInfo> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Power Information"),
-        backgroundColor: AppColors.blue2,
+        backgroundColor: AppColors.purple,
       ),
       body: Center(
         child: Column(
