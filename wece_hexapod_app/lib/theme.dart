@@ -16,6 +16,8 @@ class AppColors {
   static const yellow2 = Color(0xFFEEBF29);
   // 2025 new theme color palette 
   static const pink = Color(0xFFCD66BB);
+  static const darkishPink = Color.fromARGB(255, 160, 68, 145);
+  static const darkPink = Color.fromARGB(255, 131, 34, 115);
   static const cream = Color(0xFFF7F4DB);
   static const mauve = Color(0xFF67386C);
   static const darkBlue = Color(0xFF170652);

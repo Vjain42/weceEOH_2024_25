@@ -14,7 +14,7 @@ class _WeatherPageState extends State<WeatherInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Weather Information"),
+        title: const Text("Project Information"),
         backgroundColor: AppColors.indigo,
       ),
       body: Center(
@@ -28,13 +28,13 @@ class _WeatherPageState extends State<WeatherInfo> {
                     alignment: Alignment.center,
                     margin: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: AppColors.yellow1,
-                      border: Border.all(width: 8, color: AppColors.yellow2),
+                      color: AppColors.mauve,
+                      border: Border.all(width: 8, color: AppColors.pink),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     // Change button text when clicked.
                     child: const Text(
-                      'Weather effects',
+                      'About ATALANTA',
                       textAlign: TextAlign.center,
                       softWrap: true,
                       style: TextStyle(color: AppColors.black, fontSize:45),
@@ -61,12 +61,12 @@ class _WeatherPageState extends State<WeatherInfo> {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
                   child: ElevatedButton(
-                    child: const Text("Back to HomePage"),
+                    child: const Text("Back to HomePage!"),
                     onPressed: () {
                       Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: AppColors.white, backgroundColor: AppColors.purple,
+                      foregroundColor: AppColors.white, backgroundColor: AppColors.indigo,
                     ),
                   ),
                 ),

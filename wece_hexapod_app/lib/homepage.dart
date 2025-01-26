@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solar_axis_app/theme.dart';
+import 'package:solar_axis_app/robot_control_button.dart';
 import 'dart:async';
 // import 'theme.dart';
 import 'power_page.dart';
@@ -223,7 +224,7 @@ class _HomePageState extends State<HomePage> {
                       margin: const EdgeInsets.all(10),
                       child: ElevatedButton(
                         child: Text(
-                          "Weather: \n $temperature°F",
+                          "Infopage",
                           overflow: TextOverflow.clip,
                           textAlign: TextAlign.center,
                           style: const TextStyle(color: AppColors.black, fontSize:15),
@@ -242,6 +243,20 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
+                    // Container( //TEST ROBOT BUTTON
+                    //   alignment: Alignment.center,
+                    //   margin: const EdgeInsets.all(10),
+                    //   child: RobotControlButton(
+                    //     onPressStart: () {
+                    //       print("Move Forward: START");
+                    //       // Add your BLEHandler forward command
+                    //     },
+                    //     onPressEnd: () {
+                    //       print("Move Forward: STOP");
+                    //       // Add your BLEHandler stop command
+                    //     },
+                    //   ),
+                    // ),
                     Container( //RESET TO CURRENT TIME BUTTON
                       alignment: Alignment.center,
                       margin: const EdgeInsets.all(10),
