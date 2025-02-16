@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:solar_axis_app/theme.dart';
 import 'package:solar_axis_app/robot_control_button.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
 // import 'theme.dart';
 import 'power_page.dart';
@@ -9,6 +10,7 @@ import 'remote.dart';
 import 'globals.dart';
 import 'bluetooth_handler.dart';
 import 'bluetooth.dart';
+import 'wifi_cam.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -243,20 +245,33 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    // Container( //TEST ROBOT BUTTON
-                    //   alignment: Alignment.center,
-                    //   margin: const EdgeInsets.all(10),
-                    //   child: RobotControlButton(
-                    //     onPressStart: () {
-                    //       print("Move Forward: START");
-                    //       // Add your BLEHandler forward command
-                    //     },
-                    //     onPressEnd: () {
-                    //       print("Move Forward: STOP");
-                    //       // Add your BLEHandler stop command
-                    //     },
-                    //   ),
-                    // ),
+                    Container( //TEST ROBOT BUTTON
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.all(10),
+                      child: RobotControlButton(
+                        onPressStart: () {
+                          print("Move Forward: START");
+                          // Add your BLEHandler forward command
+                        },
+                        onPressEnd: () {
+                          print("Move Forward: STOP");
+                          // Add your BLEHandler stop command
+                        },
+                      ),
+                    ),
+                    Container( //TEST CAMERA BUTTON
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.all(10),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const CameraStreamPage()),
+                          );
+                        },
+                        child: const Text("Open Camera Stream"),
+                      ),
+                    ), // Close the Container properly
                     Container( //RESET TO CURRENT TIME BUTTON
                       alignment: Alignment.center,
                       margin: const EdgeInsets.all(10),
