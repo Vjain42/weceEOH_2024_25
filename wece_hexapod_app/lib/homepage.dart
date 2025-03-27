@@ -9,36 +9,35 @@ import 'remote.dart';
 import 'globals.dart';
 import 'bluetooth_handler.dart';
 import 'bluetooth.dart';
+import 'camera_page.dart';
+import 'info_page.dart';
+import 'sensor_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
-  // This widget is the root of your application.
   @override
   State<HomePage> createState() => _HomePageState();
 }
-class _HomePageState extends State<HomePage> {
-  double isClicked = 0;
-    // ignore: unused_field   // added this
-  Timer? _timer;
-  String fact = "Scientists created silcon solar cells in 1954";
-  double _setTime= 0;
-  String mode = "auto";
 
-  @override
+class _HomePageState extends State<HomePage> {
   //Bluetooth functions start
+  @override
   void initState() {
     super.initState();
     //bleHandler = BLEHandler(setStateCallback);
     //TODO run at startup
   }
-  void loop(){
-
-  }
 
   void setStateCallback() {
     setState(() {});
+  }
+
+  void disconnectDevice() {
+    setState(() {
+      //bleHandler.disconnect();
+    });
   }
 
   // void connectDevicePrompt() {
@@ -49,357 +48,144 @@ class _HomePageState extends State<HomePage> {
   //         return const BluetoothConnectScreen();
   //       });
   // }
-
-  void disconnectDevice() {
-    setState(() {
-      //bleHandler.disconnect();
-    });
-  }
   //Bluetooth functions end
-
-  DateTime getTime(){
-    final DateTime now = DateTime.now();
-    return now;
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      _timer = Timer.periodic(const Duration(seconds:1), (Timer t) => getTime());
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    DateTime now1 = getTime();
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
+      backgroundColor: AppColors.purple,
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-        backgroundColor: AppColors.indigo,
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //if (bleHandler.connectedDevice != null)
-              // Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children:[
-              //       Container(
-              //         margin: const EdgeInsets.all(15),
-              //         child: Image.asset(
-              //           'images/flower.png',
-              //           width: 350,
-              //           height: 225,
-              //           fit: BoxFit.cover,
-              //         ),
-              //       ),
-              //     ]),
-            //if (bleHandler.connectedDevice == null)
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:[
-                    Container(
-                      margin: const EdgeInsets.all(15),
-                      child: Image.asset(
-                        'images/logo.png',
-                        width: 350,
-                        height: 350,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ]),
-            //BLUETOOTH CONNECTION BUTTON
-            // if (bleHandler.connectedDevice == null)
-            // Container(
-            //   alignment: Alignment.center,
-            //   margin: const EdgeInsets.only(left:20),
-            //   child: const Text(
-            //     "Please connect a device",
-            //     style: TextStyle(fontSize: 28,color: AppColors.cream),
-            //   ),
-            // ),
-            // if (bleHandler.connectedDevice == null)
-            // Container(
-            //   alignment: Alignment.center,
-            //   margin: const EdgeInsets.only(left:20),
-            //   // Change button text when clicked.
-            //   child:ElevatedButton(
-            //     onPressed: connectDevicePrompt,
-            //     child: const Text(
-            //       "Connect",
-            //       style: TextStyle(fontSize: 28,color: AppColors.cream),
-            //     ),
-            //   ),
-            // ),
-            //if (bleHandler.connectedDevice != null)
-              Container(
-                alignment: Alignment.topLeft,
-                margin: const EdgeInsets.only(left:20, top:10),
-                // Change button text when clicked.
-                child: Text(
-                  'Selected Hour: $_setTime',
-                  textAlign: TextAlign.left,
-                  style: const TextStyle(color: AppColors.black,fontSize:15),
-                ),
-              ),//Container
-            //if (bleHandler.connectedDevice != null)
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:[
-                    Expanded(
-                      child: Slider(
-                        value: _setTime,
-                        max: 23,
-                        divisions: 23,
-                        label: _setTime.round().toString(),
-                        onChanged: (double value) {
-                          setState(() {
-                            _setTime = value;
-                            currTime = _setTime;
-                          });
-                        },
-                      ),
-                    )
-                  ]
-              ),
-            //if (bleHandler.connectedDevice != null)
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:[
-                    Container( //POWER BUTTON
-                      margin: const EdgeInsets.all(10),
-                      alignment: Alignment.center,
-                      child: ElevatedButton(
-                        child: Text(
-                          "Power: \n ${current*voltage} W",
-                          overflow: TextOverflow.clip,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(color: AppColors.black, fontSize:15),
-                        ),
-                        onPressed: () {
-                          print('Switching to Power Info Page');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) {
-                              return const PowerInfo();
-                            }),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.pink,
-                        ),
-                      ),
-                    ),
-                    Container( //WEATHER BUTTON
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.all(10),
-                      child: ElevatedButton(
-                        child: Text(
-                          "Infopage",
-                          overflow: TextOverflow.clip,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(color: AppColors.black, fontSize:15),
-                        ),
-                        onPressed: () {
-                          print('Switching to Weather Info Page');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) {
-                              return const WeatherInfo();
-                            }),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.pink,
-                        ),
-                      ),
-                    ),
-                    // Container( //TEST ROBOT BUTTON
-                    //   alignment: Alignment.center,
-                    //   margin: const EdgeInsets.all(10),
-                    //   child: RobotControlButton(
-                    //     onPressStart: () {
-                    //       print("Move Forward: START");
-                    //       // Add your BLEHandler forward command
-                    //     },
-                    //     onPressEnd: () {
-                    //       print("Move Forward: STOP");
-                    //       // Add your BLEHandler stop command
-                    //     },
-                    //   ),
-                    // ),
-                    Container( //RESET TO CURRENT TIME BUTTON
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.all(10),
-                      child: ElevatedButton(
-                        child: Text(
-                          "Current Hour: \n ${now1.hour}:00",
-                          overflow: TextOverflow.clip,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(color: AppColors.black, fontSize:15),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            print('Resetting');
-                            DateTime now2 = getTime();
-                            _setTime = 1.0 * (now2.hour);
-                            print('_setTime: $_setTime');
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.pink,
-                        ),
-                      ),
-                    ),
-                  ]),
-            //if (bleHandler.connectedDevice != null)
-              Row( //REMOTE CONTROL BUTTON
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:[
-                    Container(
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.all(20),
-                      child: ElevatedButton(
-                        child: const Text("Remote Control"),
-                        onPressed: () {
-                          print('Switching to Remote Control');
-                          //bleHandler.bluetoothWrite("0","manual");
-                          //bleHandler.bluetoothWrite("manual");
-                          mode = "manual";
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) {
-                              return const Remote();
-                            }),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.yellow2,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.only(left:20),
-                      // Change button text when clicked.
-                      child:ElevatedButton(
-                        child: const Text("Auto Control"),
-                          onPressed: (){
-                            print('Switching to Auto Control');
-                            //bleHandler.bluetoothWrite("0","auto");
-                            //bleHandler.bluetoothWrite("auto");
-                            mode = "auto";
-                          },
-                          style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.yellow2,
-                          ),
-                      ),
-                    ),
-                  ] //children
-              ),
-            //Click button switch
-            //if (bleHandler.connectedDevice != null)
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    // Toggle light when tapped.
-                    //isClicked = !isClicked;
-                    isClicked = isClicked +1;
-                    if(isClicked >= 5){
-                      isClicked = 0;
-                    }
-                    if(isClicked == 0){
-                      fact = 'Scientists created silicon solar cells in 1954';
-                    }
-                    else if(isClicked == 1){
-                      fact = 'Solar energy prices have significantly dropped \n in the last decade and are now 33% cheaper than gas power in the U.S. ';
-                    }
-                    else if(isClicked == 2){
-                      fact = 'On average, solar panels generate 30%-50% and 10%-20% \n of their full potential on cloudy days and days with heavy rain,';
-                    }
-                    else if(isClicked == 3){
-                      fact = 'Solar panels usually operate at a high efficiency for the first 25-30 years';
-                    }
-                    else if(isClicked == 4){
-                      fact = 'Solar is the most abundant energy source on Earth.';
-                    }
-                  });
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: AppColors.orange,
-                    border: Border.all(width: 8, color: AppColors.orange),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  // Change button text when clicked.
-                  child: Text(
-                    fact,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: AppColors.black,fontSize:18),
-                  ),
-                ),//Container
-
-              ),
-            //BLUETOOTH DISCONNECT
-            //if (bleHandler.connectedDevice != null)
-          Row( //REMOTE CONTROL BUTTON
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:[
-                  /*Container(
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.only(left:20),
-                    child: Text(
-                      bleHandler.connectedDevice!.name,
-                      style: const TextStyle(fontSize: 15,color: AppColors.black),
-                    ),
-                  ),*/
-                Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.only(left:20),
-                  // Change button text when clicked.
-                  child:ElevatedButton(
-                    onPressed: disconnectDevice,
-                    child: Text(
-                      "Disconnect: ", //${bleHandler.connectedDevice!.name}",
-                      style: const TextStyle(fontSize: 15,color: AppColors.black),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+        title: const Text(
+          "Welcome to WECE’s",
+          style: TextStyle(color: AppColors.cream, fontSize: 24, fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
+        backgroundColor: AppColors.deepPurple,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Image.asset(
+              'images/logo.png',
+              width: 200,
+              height: 200,
+            ),
+          ),
+          const SizedBox(height: 20),
+          //BLUETOOTH CONNECTION BUTTON
+          // if (bleHandler.connectedDevice == null)
+          // Column(
+          //   children: [
+          //     Container(
+          //       alignment: Alignment.center,
+          //       margin: const EdgeInsets.only(left:20),
+          //       child: const Text(
+          //         "Please connect a device",
+          //         style: TextStyle(fontSize: 28,color: AppColors.cream),
+          //       ),
+          //     ),
+          //     Container(
+          //       alignment: Alignment.center,
+          //       margin: const EdgeInsets.only(left:20),
+          //       child: ElevatedButton(
+          //         onPressed: connectDevicePrompt,
+          //         child: const Text(
+          //           "Connect",
+          //           style: TextStyle(fontSize: 28,color: AppColors.cream),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          // if (bleHandler.connectedDevice != null)
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RobotControlButton(
+                    label: "Left",
+                    // onPressStart: () {
+                    //   print("Move Left: START");
+                    //   // Add your BLEHandler left command
+                    // },
+                    // onPressEnd: () {
+                    //   print("Move Left: STOP");
+                    //   // Add your BLEHandler stop command
+                    // },
+                  ),
+                  const SizedBox(width: 10),
+                  RobotControlButton(
+                    label: "Go!",
+                    // onPressStart: () {
+                    //   print("Move Forward: START");
+                    //   // Add your BLEHandler forward command
+                    // },
+                    // onPressEnd: () {
+                    //   print("Move Forward: STOP");
+                    //   // Add your BLEHandler stop command
+                    // },
+                  ),
+                  const SizedBox(width: 10),
+                  RobotControlButton(
+                    label: "Right",
+                    // onPressStart: () {
+                    //   print("Move Right: START");
+                    //   // Add your BLEHandler right command
+                    // },
+                    // onPressEnd: () {
+                    //   print("Move Right: STOP");
+                    //   // Add your BLEHandler stop command
+                    // },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              RobotControlButton(
+                label: "Back",
+                // onPressStart: () {
+                //   print("Move Back: START");
+                //   // Add your BLEHandler backward command
+                // },
+                // onPressEnd: () {
+                //   print("Move Back: STOP");
+                //   // Add your BLEHandler stop command
+                // },
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const CameraPage()),
+                    ),
+                    style: ElevatedButton.styleFrom(backgroundColor: AppColors.cream),
+                    child: const Text("Camera", style: TextStyle(color: AppColors.deepPurple)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const InfoPage()),
+                    ),
+                    style: ElevatedButton.styleFrom(backgroundColor: AppColors.cream),
+                    child: const Text("Info", style: TextStyle(color: AppColors.deepPurple)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SensorPage()),
+                    ),
+                    style: ElevatedButton.styleFrom(backgroundColor: AppColors.cream),
+                    child: const Text("Sensors", style: TextStyle(color: AppColors.deepPurple)),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
